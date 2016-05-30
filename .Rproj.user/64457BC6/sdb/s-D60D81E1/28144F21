@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(shiny)\n\nshinyUI(\n      pageWithSidebar(\n            headerPanel(\"Katzen Trafik\"),\n            sidebarPanel(\n                  selectInput('appFunc','Function:',c('Popularity','Prediction','Comparison'), selected = \"Popularity\"),\n                  conditionalPanel(\n                        condition = \"input.appFunc == 'Popularity'\",\n                        sliderInput(\"numTweets\",\"Number of tweets\",\n                                    min = 15, max = 1000, value = 100\n                                    ),\n                        radioButtons('Feature','Features:',c('Tweet language','Location'),selected = 'Tweet language')\n                  ),\n                  conditionalPanel(\n                        condition = \"input.appFunc == 'Prediction'\", \n                        dateInput('preDate','Date to Predict')\n                  ),\n                  conditionalPanel(\n                        condition = \"input.appFunc == 'Comparison'\",\n                        textInput('altHashtag','Alternative Hashtag', width = '100%')\n                  ),\n                  actionButton('actBtn',\"Show results\")\n                  \n            ),\n            mainPanel(\n                  h3(textOutput('outText')),\n                  textOutput('appFuncNum')\n            )\n      )\n)",
+    "created" : 1464601523849.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1680385989",
+    "id" : "28144F21",
+    "lastKnownWriteTime" : 1464254838,
+    "last_content_update" : 1464254838,
+    "path" : "D:/Work/R/09/KatzenTrafik/shiny/ui.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
