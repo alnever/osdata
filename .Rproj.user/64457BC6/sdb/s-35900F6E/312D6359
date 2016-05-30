@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nlibrary(shiny)\n\nlibrary(httr)\nlibrary(jsonlite)\n\nconsumerKey    <<- \"98MiQg0cF48napb4dVqY44AOe\"\nconsumerSecret <<- \"FcgWqaEfrKxE2J4l9DdtRwOLcDbKkUy21zsg35qcjvxiocPN71\"\ntokenKey       <<- \"2328474228-AnefTnuZdXJNf6Ocb61ImGoGuogSEN6zf6yM6qD\"\ntokenSecret    <<- \"azE9pv7rDLTYJ37990D1lbem28eIUgqQ9ZKbehnwri9zj\"\n\noptions(httr_oauth_cache=T)\nmyapp <<- oauth_app(\"twitter\", key=consumerKey, secret=consumerSecret)\nsig   <<- sign_oauth1.0(myapp, token = tokenKey, token_secret = tokenSecret)\n\ngetTweets <- function(numTweets, hashTag) {\n      \n      needTweets <- 0\n      restTweets <- 0\n      \n      if (numTweets < 100) {\n            needTweets <- numTweets      \n      } else {\n            needTweets <- 100\n            restTweets <- numTweets - 100\n      }\n            \n      someTweets <- GET(paste(\"https://api.twitter.com/1.1/search/tweets.json?q=%23cat&count=\",needTweets, sep = \"\"), sig)\n      json1 <- content(someTweets)\n      json2 <- fromJSON(toJSON(json1))\n      tweets <- json2$statuses\n      \n      while (restTweets > 0) {\n            needTweets <- ifelse(restTweets < 100, restTweets, 100)\n            new_url <- paste(\"https://api.twitter.com/1.1/search/tweets.json\",\n                                 json2$search_metadata$next_results,\n                                 '&count=',\n                                 needTweets,                                   \n                                 sep = \"\")\n            someTweets <- GET(new_url, sig)\n            json1 <- content(someTweets)\n            json2 <- fromJSON(toJSON(json1))\n            tweets2 <- json2$statuses\n            \n            if (names(tweets2) != names(tweets))\n            {\n                  tweets <- tweets[,names(tweets2)]\n                  row.names(tweets) <- paste('1',row.names(tweets),sep=\"\")\n                  row.names(tweets2) <- paste('2',row.names(tweets2),sep=\"\")\n                  tweets <- rbind(tweets, tweets2)                  \n            }\n            \n            restTweets <- restTweets - needTweets\n      }\n      return(tweets)\n}\n\nshinyServer(\n      function(input, output) {\n            \n            appFunc <- reactive({\n                  switch(input$appFunc,\n                         'Popularity' = 1,\n                         'Prediction' = 2,\n                         'Comparison' = 3)\n            })\n            \n            \n            if (x == 1) {\n                  output$outText <- renderText('Popularity of the #cat')\n            } else if (x == 2) {\n                  output$outText <- renderText('Prediction of the further #cat-tweets')\n            } else  if (x == 3) {\n                  output$outText <- renderText({paste('Comparision of the #cat-tweets popularity with ',input$altHashtag)})\n            }\n      }\n)",
+    "created" : 1464602920874.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2368452677",
+    "id" : "312D6359",
+    "lastKnownWriteTime" : 1464256015,
+    "last_content_update" : 1464256015,
+    "path" : "D:/Work/R/09/KatzenTrafik/shiny/server.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,9 @@
+Package: osdata
+Type: Package
+Title: OS data
+Version: 0.1.0
+Author: Aleksei Neverov
+Maintainer: Aleksei Neverov <al_neverov@live.ru>
+Description: This package contains the set of data and functions for analyzing of the operating systems popularity worldwide
+License: GPL-3
+LazyData: TRUE
