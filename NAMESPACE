@@ -1,1 +1,7 @@
-export("predict.os")
+export("fitRegressionModels")
+export("getForecastingInterval")
+export("getPredictions")
+export("getPredLwr")
+export("getPredUpr")
+
+
