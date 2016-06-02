@@ -8,7 +8,7 @@ data("osmap")
 #' @details
 #' For each variable of the OS popularity is built a regression model using \code{lm}
 #' function.
-#' @seealso \code{lm} \code {apply}
+#' @seealso \code{lm} \code{apply}
 #' @import stats
 #' @export
 
@@ -92,7 +92,7 @@ getPredictions <- function(a_Year, a_Month) {
 #' @param a_Month a character value of the last month in the date list for forecasting in form "MM" (for example, "01", "07", "10" etc.)
 #' @return a dataset of the predicted values
 #' @details
-#' This function uses predicted value, taken from the \code {getPredictions} function for given time period ended with a_Year
+#' This function uses predicted value, taken from the \code{getPredictions} function for given time period ended with a_Year
 #' and a_Month. Then extract it the predicted values from the predictions.
 #' @seealso \code{fitRegressionModels} \code{getForecastingInterval} \code{lapply}
 #' @import stats
@@ -125,7 +125,7 @@ getPredValues <- function(a_Year, a_Month) {
 #' @param a_Month a character value of the last month in the date list for forecasting in form "MM" (for example, "01", "07", "10" etc.)
 #' @return a dataset of the predicted values
 #' @details
-#' This function uses predicted value, taken from the \code {getPredictions} function for given time period ended with a_Year
+#' This function uses predicted value, taken from the \code{getPredictions} function for given time period ended with a_Year
 #' and a_Month. Then extract it the lower values of the confidence intervals from the predictions.
 #' @seealso \code{fitRegressionModels} \code{getForecastingInterval} \code{lapply}
 #' @import stats
@@ -157,7 +157,7 @@ getPredLwr <- function(a_Year, a_Month) {
 #' @param a_Month a character value of the last month in the date list for forecasting in form "MM" (for example, "01", "07", "10" etc.)
 #' @return a dataset of the predicted values
 #' @details
-#' This function uses predicted value, taken from the \code {getPredictions} function for given time period ended with a_Year
+#' This function uses predicted value, taken from the \code{getPredictions} function for given time period ended with a_Year
 #' and a_Month. Then extract it the upper values of the confidence intervals from the predictions.
 #' @seealso \code{fitRegressionModels} \code{getForecastingInterval} \code{lapply}
 #' @import stats

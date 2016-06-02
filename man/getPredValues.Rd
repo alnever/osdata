@@ -18,7 +18,7 @@ a dataset of the predicted values
 Extract the predicted values
 }
 \details{
-This function uses predicted value, taken from the \code {getPredictions} function for given time period ended with a_Year
+This function uses predicted value, taken from the \code{getPredictions} function for given time period ended with a_Year
 and a_Month. Then extract it the predicted values from the predictions.
 }
 \seealso{

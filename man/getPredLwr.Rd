@@ -18,7 +18,7 @@ a dataset of the predicted values
 Extract the lower values of the confidence intervals
 }
 \details{
-This function uses predicted value, taken from the \code {getPredictions} function for given time period ended with a_Year
+This function uses predicted value, taken from the \code{getPredictions} function for given time period ended with a_Year
 and a_Month. Then extract it the lower values of the confidence intervals from the predictions.
 }
 \seealso{

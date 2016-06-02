@@ -17,6 +17,6 @@ For each variable of the OS popularity is built a regression model using \code{l
 function.
 }
 \seealso{
-\code{lm} \code {apply}
+\code{lm} \code{apply}
 }
 
